@@ -2,7 +2,7 @@
 
 class ControllerExtensionModuleReviews extends Controller {
 
-    public function index() {
+    public function index() { 
         static $module = 0;
         $this->load->model('tool/image');
         $this->load->model('extension/module/reviews');
