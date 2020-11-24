@@ -1,0 +1,83 @@
+{% if reviews  %}
+    <section class="other-reviewsw-wrp">
+        <div class="container">
+            <div class="slider-with-title-and-arrows">
+                <h2 class="second-level-title">{{ title }}</h2>
+            </div>
+            <div class="slider-with-absolute-arrows">
+                <div class="reviews-slider" id="reviews-slider{{ module }}">
+                    {% for review in reviews %}
+                        <div class="item-of-review-slide">
+                            <div class="review-slide-content">
+                                {% if review.video %}
+
+                                    <a href="{{ review.video }}" class="review-image" data-fancybox>
+                                        <div class="image-wrp">
+                                            <img src="{{ review.thumb }}" alt="{{ review.name }}">
+                                        </div>
+                                        <div class="play">
+                                            <span class="circle"></span>
+                                        </div>
+                                    </a>
+                                {% else  %}
+                                    <div class="review-image" data-fancybox>
+                                        <div class="image-wrp">
+                                            <img src="{{ review.thumb }}" alt="{{ review.name }}">
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="review-body">
+                                    <div class="review-head">
+                                        <div class="name-and-descript">
+                                            <a href="{{ review.href }}" class="name">{{ review.name }}</a>
+                                            <span class="descript">{{ review.subname }}</span>
+                                        </div>
+                                        <div class="rating-row">
+                                            <span class="rating-val">{{ review.rating }}.0</span>
+                                            <div class="rating-stars">
+                                                <span class="rating" style="width: {{ review.rating_width }}%;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="review-text">{{ review.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor  %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#reviews-slider{{ module }}").on("init", function (event, slick) {
+                $(this).css("visibility", "visible");
+            });
+
+            if ($("#reviews-slider{{ module }}").length > 0) {
+                $("#reviews-slider{{ module }}").slick({
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    dots: false,
+                    speed: 700,
+                    infinite: true,
+                    adaptiveHeight: true,
+                    responsive: [
+                        {
+                            breakpoint: 1360,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                            },
+                        },
+                    ],
+                });
+            }
+        })
+    </script>
+
+{% endif %}
