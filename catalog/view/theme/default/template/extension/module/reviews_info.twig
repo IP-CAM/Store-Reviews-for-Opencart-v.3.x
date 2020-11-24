@@ -1,0 +1,59 @@
+{{ header }}
+{% include 'vetka/template/partials/breadcrumb.twig' %}
+
+<section class="page-name-wrp">
+    <div class="container">
+        <div class="page-name-content">
+            <h1 class="first-level-title">отзывы</h1>
+        </div>
+    </div>
+</section>
+{{ content_top }}
+<section class="big-review-wrp">
+    <div class="container">
+        <div class="row">
+            <div class="review-slide-content">
+                <div class="col-md-5 col-xs-12">
+                    {% if video  %}
+                        <a href="{{ video }}" class="review-image big" data-fancybox>
+                            <div class="image-wrp">
+                                <img src="{{ thumb }}" alt="{{ name }}">
+                            </div>
+                            <div class="play">
+                                <span class="circle"></span>
+                            </div>
+                        </a>
+                    {% else  %}
+                        <div class="review-image big" data-fancybox>
+                            <div class="image-wrp">
+                                <img src="{{ thumb }}" alt="{{ name }}">
+                            </div>
+
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-7 col-xs-12">
+                    <div class="review-body">
+                        <div class="review-head">
+                            <div class="name-and-descript">
+                                <span class="name">{{ name }}</span>
+                                <span class="descript">{{ subname }}</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="rating-val">{{ rating }}.0</span>
+                                <div class="rating-stars">
+
+                                    <span class="rating" style="width: {{ rating_width }}%;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">{{ text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ content_bottom }}
+{{ footer }}
